@@ -3,11 +3,11 @@ import Navbar from '../component/Navbar'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react'
-import { removefav } from '@/store/slice/connexion';
+import { removefav, initializeFav } from '@/store/slice/connexion';
 
 function Page() {
   const user = useSelector((state) => state.connexion.user);
-  const dispatch = useDispatch(); // Si vous utilisez Redux pour gérer l'état
+  const dispatch = useDispatch(); 
 
 
 
@@ -34,7 +34,7 @@ function Page() {
       <div className='w-1/2 flex flex-col pt-20'>
         <h1>My Fav</h1>
         <hr className='border-secondary border-solid border-1 w-full' />
-        <div className='flex flex-wrap gap-3 p-2 '>
+        <div className='grid gap-2 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 2xl:grid-cols-7  p-4'>
           {user[0].fav.map((value, index) => {
             return (
               <div key={value.id} className="relative">

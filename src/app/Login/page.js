@@ -13,7 +13,7 @@ function page() {
   return (
     <section className='min-h-screen'>
       <Navbar/>
-    <section className='w-full p-48 justify-center flex items-center'>
+    <section className='w-full max-md:p-0 max-md:pt-28 p-48 justify-center flex items-center'>
       {con==0?
     contents == 1 ? <Register/>:<Login/>:
     <div className='w-full justify-center flex  items-center text-3xl flex-col'>

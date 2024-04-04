@@ -62,12 +62,22 @@ export const connexion = createSlice({
       state.user[0].fav.splice(action.payload,1);
       saveToLocalStorage(state);
     },
+    initializeFav: (state, action) => {
+      // console.log('initializeFav action payload:', action.payload);
+      // Supposons que `user` a une structure où `fav` est un tableau de favoris
+      if(state.user && state.user.length > 0) {
+        // Met à jour les favoris de l'utilisateur avec ceux fournis
+        state.user[0].fav = action.payload.fav;
+
+      }
+    },
+
 
   },
 });
 
 // Export the actions for use in the application
-export const { register, login, reg, connect, disconnect, info , addfav ,removefav } = connexion.actions;
+export const { register, login, reg, connect, disconnect, info , addfav ,removefav,initializeFav } = connexion.actions;
 
 // Export the reducer for the store configuration
 export default connexion.reducer;
