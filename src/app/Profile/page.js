@@ -3,7 +3,7 @@ import Navbar from '../component/Navbar'
 import Link from 'next/link'
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react'
-import { removefav, initializeFav } from '@/store/slice/connexion';
+import { removefav } from '@/store/slice/connexion';
 
 function Page() {
   const user = useSelector((state) => state.connexion.user);

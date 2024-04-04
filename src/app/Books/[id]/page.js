@@ -5,6 +5,7 @@
   import Navbar from '@/app/component/Navbar';
   import Link from 'next/link';
   import { addfav } from '@/store/slice/connexion';
+  import Image from 'next/image'
 
   export default function Page({ params }) {
     const user = useSelector((state) => state.connexion.user)
@@ -31,6 +32,7 @@
             <div className='flex w-full max-w-4xl max-lg:flex-col min-h-sreen '>
               <div className='w-1/2 flex justify-center items-start pt-5 flex-col max-lg:w-full max-lg:flex-row max-lg:pl-4  max-lg:justify-center max-lg:items-center'>
                 <img className='h-[500px] max-lg:h-[350px]' src={currentContent.image_url} alt={currentContent.title} />
+
                 <div className='flex justify-center items-center w-full pt-5 gap-5 max-lg:flex-col max-lg:pt-4 '>
                 <div className="radial-progress text-primary " style={{"--value":currentContent.rating*20}} role="progressbar">{currentContent.rating}/5</div>
                 {con==1&&

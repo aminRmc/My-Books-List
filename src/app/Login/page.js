@@ -5,7 +5,7 @@ import Login from '../component/Login'
 import Register from '../component/Register'
 import { useSelector, useDispatch } from 'react-redux';
 
-function page() {
+function Page() {
 
   const contents = useSelector((state) => state.connexion.value)
   const con = useSelector((state) => state.connexion.con)

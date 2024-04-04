@@ -6,7 +6,6 @@ import { maj } from '@/store/slice/connexion';
 const Login = () => {
   // Accessing the users list from the Redux store.
   const users = useSelector((state) => state.connexion.tab);
-  const user = useSelector((state) => state.connexion.user)
   const dispatch = useDispatch();
 
   // Local state for username and password inputs.
@@ -16,16 +15,7 @@ const Login = () => {
   // States to manage login messages.
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState(''); // New state for success message.
-
-
-  useEffect(() => {
-    users.forEach((value) => {
-      if (value.user === username && value.mdp === password) {
-value = user
-      }
-    });
-  }, [user])
-  
+ 
   // Function to verify user credentials.
   const verify = () => {
     let isUserFound = false;
