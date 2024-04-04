@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { disconnect } from '@/store/slice/connexion';
 import logo from '../../../public/logo.svg'
-export default function () {
+ function Navbar () {
   const [isdark, setIsdark] = useState(
     JSON.parse(localStorage.getItem('isdark'))
   );
@@ -69,3 +69,4 @@ export default function () {
   </div>
     </div>
 )}
+export default Navbar;
