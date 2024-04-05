@@ -11,8 +11,15 @@ const loadFromLocalStorage = () => {
 
 // Function to save state to localStorage
 const saveToLocalStorage = (state) => {
-  const serializedState = JSON.stringify(state);
-  localStorage.setItem('formState', serializedState);
+  if (typeof localStorage !== 'undefined') {
+    // Utilisez localStorage ici
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('formState', serializedState);
+} else {
+    console.log("localStorage n'est pas disponible dans cet environnement.");
+    // Gérez le cas où localStorage n'est pas disponible
+}
+
 };
 
 // Load the initial state from localStorage
