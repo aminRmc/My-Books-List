@@ -25,7 +25,7 @@ import logo from '../../../public/logo.svg'
         <li>
         <Link href={"/Books"}>Search</Link>
         </li>
-        <li> <Link href={"/filter"}>Genres</Link></li>
+        <li> <Link href={"/Genres"}>Genres</Link></li>
       </ul>
     </div>
     <Link className='text-2xl' href={"/"}> My-Books-List</Link>
