@@ -5,18 +5,19 @@ import Link from 'next/link';
 
 export default function Carousel() {
   const dispatch = useDispatch();
+  const [randomIndices, setRandomIndices] = useState([]);
+  const [topRatedContents, setTopRatedContents] = useState([]);
+  const [topReadContents, setTopReadContents] = useState([]);
+  
+  // Fetch contents when the component mounts
+  useEffect(() => {
+    dispatch(fetchContent());
+  }, [dispatch]);
+  
   const contents = useSelector((state) => state.api.contents);
   const isLoading = useSelector((state) => state.api.isLoading);
   const error = useSelector((state) => state.api.error);
-    const [randomIndices, setRandomIndices] = useState([]);
-    const [topRatedContents, setTopRatedContents] = useState([]);
-    const [topReadContents, setTopReadContents] = useState([]);
-
-    // Fetch contents when the component mounts
-    useEffect(() => {
-      dispatch(fetchContent());
-    }, [dispatch]);
-
+  
     // Generate random indices after contents are fetched or updated
     useEffect(() => {
       if (contents.length > 0) {
