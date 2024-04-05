@@ -19,11 +19,11 @@ export default function Carousel() {
   const error = useSelector((state) => state.api.error);
 
     // Generate random indices after contents are fetched or updated
-    useEffect(() => {
-      if (contents.length > 0) {
-        setRandomIndices([...Array(10)].map(() => Math.floor(Math.random() * contents.length)));
-      }
-    }, [contents]);
+  useEffect(() => {
+    if (contents.length > 0) {
+      setRandomIndices([...Array(10)].map(() => Math.floor(Math.random() * contents.length)));
+    }
+  }, [contents]);
 
   // Filter, sort contents based on rating, and take the top 5
   useEffect(() => {
