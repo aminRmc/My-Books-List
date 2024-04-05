@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchContent } from "@/store/slice/apiSlice";
+import { fetchContent } from "../../store/slice/apiSlice";
 import Link from 'next/link';
 
 export default function Carousel() {
