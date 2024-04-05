@@ -17,7 +17,7 @@ export default function Carousel() {
   const contents = useSelector((state) => state.api.contents);
   const isLoading = useSelector((state) => state.api.isLoading);
   const error = useSelector((state) => state.api.error);
-  
+
     // Generate random indices after contents are fetched or updated
     useEffect(() => {
       if (contents.length > 0) {
@@ -27,11 +27,11 @@ export default function Carousel() {
 
   // Filter, sort contents based on rating, and take the top 5
   useEffect(() => {
-    const topRated = [...contents].sort((a, b) => b.rating - a.rating).slice(0, 10);
+    const topRated = [...contents].sort((a, b) => b?.rating - a.rating).slice(0, 10);
     setTopRatedContents(topRated);
   }, [contents]);
   useEffect(() => {
-    const topRated = [...contents].sort((a, b) => b.review_count - a.review_count).slice(0, 10);
+    const topRated = [...contents].sort((a, b) => b?.review_count - a.review_count).slice(0, 10);
     setTopReadContents(topRated);
   }, [contents]);
 
@@ -71,9 +71,9 @@ export default function Carousel() {
       </div>
       <div className="h-[25em] w-full carousel carousel-center shadow-custom1 shadow-[#252525] ">
         {topReadContents.map((content) => (
-          <div key={content.id} className="carousel-item m-1">
-            <Link href={`/Books/${content.id}`}>
-              <img className='h-full' src={content.image_url} alt="" />
+          <div key={content?.id} className="carousel-item m-1">
+            <Link href={`/Books/${content?.id}`}>
+              <img className='h-full' src={content?.image_url} alt="" />
             </Link>
           </div>
         ))}
