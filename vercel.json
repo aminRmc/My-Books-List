@@ -1,12 +1,7 @@
 {
     "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
-    ],
-    "defineConfig":[
-      {
-        "base": "/",
-        "trailingSlash": "always"
-    }
+      { "source": "/(.*)", "destination": "/" ,"base": "/",
+      "trailingSlash": "always"}
     ]
 
   }
