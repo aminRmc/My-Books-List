@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../component/Navbar';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchContent } from '@/store/slice/apiSlice';
+import { fetchContent } from '../../store/slice/apiSlice';
 import Link from 'next/link';
 
 function Page() {
