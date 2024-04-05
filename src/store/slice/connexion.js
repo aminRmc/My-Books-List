@@ -2,61 +2,59 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // Function to load state from localStorage
 const loadFromLocalStorage = () => {
-  const serializedState = localStorage.getItem('formState');
-  // If there is no saved state, return a default state object
-  if (serializedState === null) return { value: 1, tab: [], con: 0, user: [] };
-  // Parse the saved state and return it
-  return JSON.parse(serializedState);
+  if (typeof window !== 'undefined') {
+    const serializedState = localStorage.getItem('formState');
+    // If there is no saved state, return a default state object
+    if (serializedState === null) return { value: 1, tab: [], con: 0, user: [] };
+    // Parse the saved state and return it
+    return JSON.parse(serializedState);
+  } else {
+    // Return the default initial state if executed on the server side
+    return { value: 1, tab: [], con: 0, user: [] };
+  }
 };
 
 // Function to save state to localStorage
 const saveToLocalStorage = (state) => {
-  if (typeof localStorage !== 'undefined') {
-    // Utilisez localStorage ici
+  if (typeof window !== 'undefined') {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('formState', serializedState);
-} else {
-    console.log("localStorage n'est pas disponible dans cet environnement.");
-    // Gérez le cas où localStorage n'est pas disponible
-}
-
+  } else {
+    console.log("localStorage is not available in this environment.");
+    // Consider alternative persistent state management here
+  }
 };
 
 // Load the initial state from localStorage
-const initialState = loadFromLocalStorage(); 
+const initialState = loadFromLocalStorage();
 
 // Create a slice with reducers to handle actions
 export const connexion = createSlice({
   name: 'form',
   initialState,
   reducers: {
-    // Action to register new data and save the updated state
+    // Actions...
     register: (state, action) => {
       state.tab.push(action.payload);
       saveToLocalStorage(state);
     },
-    // Action to set login state and save it
     login: (state) => {
       state.value = 0;
       saveToLocalStorage(state);
     },
-    // Action to reset login state to default and save it
     reg: (state) => {
       state.value = 1;
       saveToLocalStorage(state);
     },
-    // Action to set connection state to connected and save it
     connect: (state) => {
       state.con = 1;
       saveToLocalStorage(state);
     },
-    // Action to reset connection state to disconnected, clear user data, and save
     disconnect: (state) => {
       state.con = 0;
       state.user = [];
       saveToLocalStorage(state);
     },
-    // Action to add user information and save the updated state
     info: (state, action) => {
       state.user.push(action.payload);
       saveToLocalStorage(state);
@@ -66,16 +64,14 @@ export const connexion = createSlice({
       saveToLocalStorage(state);
     },
     removefav: (state, action) => {
-      state.user[0].fav.splice(action.payload,1);
+      state.user[0].fav.splice(action.payload, 1);
       saveToLocalStorage(state);
     },
- 
-
   },
 });
 
-// Export the actions for use in the application
-export const { register, login, reg, connect, disconnect, info , addfav ,removefav } = connexion.actions;
+// Export actions for use in the application
+export const { register, login, reg, connect, disconnect, info, addfav, removefav } = connexion.actions;
 
-// Export the reducer for the store configuration
+// Export the reducer for store configuration
 export default connexion.reducer;
