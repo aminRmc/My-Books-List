@@ -10,16 +10,16 @@ const initialState = {
 export const fetchContent = createAsyncThunk(
   'content/fetchContent',
   async () => {
-    const res = await axios('https://example-data.draftbit.com/books')
-      // const res = await axios({
-      //   method:"get",
-      //   baseURL:"example-data.draftbit.com/books/api",
-      //   url:"requisition"
-      // })
-    const data = await res.data
-    return data
+    const res = await axios({
+      method: "get",
+      // Assurez-vous que l'URL est correcte et complète
+      url: "https://example-data.draftbit.com/books",
+    });
+    const data = await res.data;
+    return data;
   }
-)
+);
+
 
 export const contentSlice = createSlice({
   name: 'content',
